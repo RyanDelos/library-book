@@ -6,6 +6,12 @@
   --red1: #9a3333;
   --yellow: #ec8f00;
   --white: #eaeaea;
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 40px;
+  --container-width: 120rem;
 }
 
 *,
@@ -29,7 +35,7 @@ body {
 .header {
   background-color: var(--red1);
   padding: 1.25rem 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-xl);
 }
 
 .title {
@@ -37,7 +43,7 @@ body {
 }
 
 .main {
-  max-width: 120rem;
+  max-width: var(--container-width);
   position: relative;
 }
 
@@ -151,16 +157,22 @@ select {
   font-size: 1.25rem;
 }
 
-.book-shelf {
+/* .book-shelf {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  /* margin: 2rem; */
   padding: 3rem;
   gap: 2rem;
-  height: 100vh;
-  /* z-index: 1; */
+  height: 100vh; 
+} */
+
+.book-shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-xl);
 }
 
 .book-container {
@@ -170,13 +182,14 @@ select {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  font-size: inherit;
   gap: 2rem;
   width: 18rem;
   height: 20rem;
 }
 
 .book-title {
-  font-size: 2rem;
+  font-size: inherit;
   align-self: center;
 }
 
@@ -218,6 +231,14 @@ hr {
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
+  width: 100%;
+  background-color: var(--red);
+  position: absolute;
+  left: 0;
+}
+
+.fa-brands {
+  color: var(--white);
 }
 
 .footer-box {
