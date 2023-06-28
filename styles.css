@@ -61,6 +61,7 @@ body {
   width: 3.125rem;
   height: 3.125rem;
   transition: 0.3s;
+  z-index: 100;
 }
 
 .add-btn:hover,
