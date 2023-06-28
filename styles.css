@@ -158,16 +158,6 @@ select {
   font-size: 1.25rem;
 }
 
-/* .book-shelf {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 3rem;
-  gap: 2rem;
-  height: 100vh; 
-} */
-
 .book-shelf {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -235,6 +225,7 @@ hr {
   width: 100%;
   background-color: var(--red);
   position: absolute;
+  bottom: 0;
   left: 0;
 }
 
