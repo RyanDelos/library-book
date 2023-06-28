@@ -30,54 +30,7 @@
     </header>
     <main class="main">
       <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
-      <!-- <div class="overlay"></div> -->
       <div class="book-shelf"></div>
-      <section class="popup hidden">
-        <div class="container">
-          <h2 class="form-title">New Book</h2>
-          <div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
-          <div class="form-containter">
-            <form id="form" action="/" method="GET">
-              <label for="book-title"></label>
-              <input
-                type="text"
-                name="book-title"
-                id="book-title"
-                placeholder="Title"
-                autocomplete="off"
-                required
-              />
-              <br />
-              <label for="author"></label>
-              <input
-                type="text"
-                name="author"
-                id="author"
-                placeholder="Author"
-                autocomplete="off"
-                required
-              />
-              <br />
-              <label for="pages"></label>
-              <input
-                type="number"
-                name="pages"
-                id="pages"
-                placeholder="Pages"
-                autocomplete="off"
-                required
-              />
-              <br />
-              <label for="read">Have you Read this book?</label>
-              <select name="read" id="read">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
-              <button class="submit-btn" type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
-      </section>
     </main>
     <footer class="footer">
       <p class="developed-by">Developed By: Ryan Delos Santos</p>
@@ -99,5 +52,51 @@
         </p>
       </div>
     </footer>
+    <section class="popup hidden">
+      <div class="container">
+        <h2 class="form-title">New Book</h2>
+        <div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
+        <div class="form-containter">
+          <form id="form" action="/" method="GET">
+            <label for="book-title"></label>
+            <input
+              type="text"
+              name="book-title"
+              id="book-title"
+              placeholder="Title"
+              autocomplete="off"
+              required
+            />
+            <br />
+            <label for="author"></label>
+            <input
+              type="text"
+              name="author"
+              id="author"
+              placeholder="Author"
+              autocomplete="off"
+              required
+            />
+            <br />
+            <label for="pages"></label>
+            <input
+              type="number"
+              name="pages"
+              id="pages"
+              placeholder="Pages"
+              autocomplete="off"
+              required
+            />
+            <br />
+            <label for="read">Have you Read this book?</label>
+            <select name="read" id="read">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+            <button class="submit-btn" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
