@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Open+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/bb515311f9.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script defer src="/script.js"></script>
+    <title>Library Book</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title">
+        Coolest Library
+        <span><i class="fa-solid fa-book-open-reader"></i></span>
+      </h1>
+      <div></div>
+    </header>
+    <main class="main">
+      <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
+      <!-- <div class="overlay"></div> -->
+      <div class="book-shelf"></div>
+      <section class="popup hidden">
+        <div class="container">
+          <h2 class="form-title">New Book</h2>
+          <div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
+          <div class="form-containter">
+            <form id="form" action="/" method="GET">
+              <label for="book-title"></label>
+              <input
+                type="text"
+                name="book-title"
+                id="book-title"
+                placeholder="Title"
+                autocomplete="off"
+                required
+              />
+              <br />
+              <label for="author"></label>
+              <input
+                type="text"
+                name="author"
+                id="author"
+                placeholder="Author"
+                autocomplete="off"
+                required
+              />
+              <br />
+              <label for="pages"></label>
+              <input
+                type="number"
+                name="pages"
+                id="pages"
+                placeholder="Pages"
+                autocomplete="off"
+                required
+              />
+              <br />
+              <label for="read">Have you Read this book?</label>
+              <select name="read" id="read">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+              <button class="submit-btn" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="developed-by">Developed By: Ryan Delos Santos</p>
+
+      <div class="footer-box">
+        <p class="copyright">&copy; <span class="year">2021</span></p>
+        <p class="folow-me">
+          Follow Me:
+          <span class="social-media">
+            <a href="https://www.linkedin.com/in/ryan-ds/" target="_blank">
+              <i class="fa-brands fa-linkedin"></i
+            ></a>
+          </span>
+          <span class="social-media">
+            <a href="https://github.com/ryandelos" target="_blank">
+              <i class="fa-brands fa-github"></i
+            ></a>
+          </span>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
