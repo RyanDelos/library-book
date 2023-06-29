@@ -184,10 +184,10 @@ select {
   align-self: center;
 }
 
-hr {
+/* hr {
   border: 2px solid var(--white);
   width: 100%;
-}
+} */
 
 .btn-read,
 .btn-remove {
@@ -218,15 +218,15 @@ hr {
 }
 
 .footer {
-  padding: 1.5rem;
+  background-color: var(--red);
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
-  width: 100%;
-  background-color: var(--red);
+  padding: 1.5rem;
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
 }
 
 .fa-brands {
