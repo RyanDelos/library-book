@@ -18,8 +18,8 @@ closeForm.onclick = function () {
   hidden.style.visibility = 'hidden';
 };
 
+// the constructor...
 function Book(title, author, pages, read) {
-  // the constructor...
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -27,7 +27,6 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(event) {
-  // do stuff here
   event.preventDefault();
   // Get the form input values
   const titleInput = document.getElementById('book-title').value;
