@@ -1,112 +1,122 @@
 'use strict';
 
-const addBtn = document.querySelector('.add-btn');
-const hidden = document.querySelector('.hidden');
-const form = document.querySelector('#form');
-const closeForm = document.querySelector('.close-btn');
-const bookShelf = document.querySelector('.book-shelf');
-let myLibrary = [];
-let year = document.querySelector('.year');
-let currentYear = new Date().getFullYear();
-
-addBtn.onclick = function () {
-  hidden.style.visibility = 'visible';
-};
-
-// close when user clicks x button
-closeForm.onclick = function () {
-  hidden.style.visibility = 'hidden';
-};
-
 // the constructor...
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
-function addBookToLibrary(event) {
-  event.preventDefault();
-  // Get the form input values
-  const titleInput = document.getElementById('book-title').value;
-  const authorInput = document.getElementById('author').value;
-  const pagesInput = document.getElementById('pages').value;
-  const readInput = document.getElementById('read').value;
+class Library {
+  constructor() {
+    this.myLibrary = [];
+    this.addBtn = document.querySelector('.add-btn');
+    this.hidden = document.querySelector('.hidden');
+    this.form = document.querySelector('#form');
+    this.closeForm = document.querySelector('.close-btn');
+    this.bookShelf = document.querySelector('.book-shelf');
+    this.year = document.querySelector('.year');
+    this.currentYear = new Date().getFullYear();
 
-  const newBook = new Book(titleInput, authorInput, pagesInput, readInput);
+    this.addBtn.addEventListener('click', this.showForm.bind(this));
+    this.closeForm.addEventListener('click', this.hideForm.bind(this));
+    this.form.addEventListener('submit', this.addBookToLibrary.bind(this));
 
-  myLibrary.push(newBook);
-  console.log(myLibrary);
+    this.year.textContent = this.currentYear;
+  }
 
-  event.target.reset();
+  showForm() {
+    this.hidden.style.visibility = 'visible';
+    console.log('clicked');
+  }
 
-  // hides form when submitted
-  hidden.style.visibility = 'hidden';
+  hideForm() {
+    this.hidden.style.visibility = 'hidden';
+  }
 
-  renderBooks();
+  addBookToLibrary(event) {
+    event.preventDefault();
+    // Get the form input values
+    const titleInput = document.getElementById('book-title').value;
+    const authorInput = document.getElementById('author').value;
+    const pagesInput = document.getElementById('pages').value;
+    const readInput = document.getElementById('read').value;
+
+    const newBook = new Book(titleInput, authorInput, pagesInput, readInput);
+
+    this.myLibrary.push(newBook);
+    event.target.reset();
+
+    // hides form when submitted
+    this.hideForm();
+
+    this.renderBooks();
+  }
+
+  removeBook(index) {
+    this.myLibrary.splice(index, 1);
+    this.renderBooks();
+  }
+
+  renderBooks() {
+    this.bookShelf.innerHTML = '';
+    this.myLibrary.forEach((book, index) => {
+      console.log(book);
+      this.generateBookCard(book, index);
+    });
+  }
+
+  generateBookCard(book) {
+    const bookCard = document.createElement('div');
+    const title = document.createElement('h2');
+    const author = document.createElement('p');
+    const pages = document.createElement('p');
+    const readBtn = document.createElement('button');
+    const removeBtn = document.createElement('button');
+
+    bookCard.classList.add('book-container');
+    title.classList.add('book-title');
+    author.classList.add('book-author');
+    pages.classList.add('book-pages');
+    readBtn.classList.add('btn-read');
+    removeBtn.classList.add('btn-remove');
+
+    title.textContent = book.title;
+    author.textContent = `Author: ${book.author}`;
+    pages.textContent = `${book.pages} pages`;
+    readBtn.textContent = `Read: ${book.read}`;
+    removeBtn.textContent = 'Remove';
+
+    this.bookShelf.appendChild(bookCard);
+    bookCard.appendChild(title);
+    bookCard.appendChild(author);
+    bookCard.appendChild(pages);
+    bookCard.appendChild(readBtn);
+    bookCard.appendChild(removeBtn);
+
+    // remove child of bookShelf that was clicked
+    removeBtn.addEventListener('click', () => {
+      this.removeBook(book);
+      this.bookShelf.removeChild(bookCard);
+    });
+
+    readBtn.addEventListener('click', () => {
+      if (readBtn.textContent === 'Read: yes') {
+        readBtn.textContent = 'Read: no';
+      } else {
+        readBtn.textContent = 'Read: yes';
+      }
+    });
+  }
+  // remove book in myLibrary array
+  removeBook(index) {
+    this.myLibrary.splice(index, 1);
+    console.log(this.myLibrary);
+  }
 }
 
-function renderBooks() {
-  bookShelf.innerHTML = '';
-
-  myLibrary.forEach((book) => {
-    console.log(book);
-    generateBookCard(book);
-  });
-}
-
-function generateBookCard(book) {
-  const bookCard = document.createElement('div');
-  const title = document.createElement('h2');
-  const author = document.createElement('p');
-  const pages = document.createElement('p');
-  const readBtn = document.createElement('button');
-  const removeBtn = document.createElement('button');
-
-  bookCard.classList.add('book-container');
-  title.classList.add('book-title');
-  author.classList.add('book-author');
-  pages.classList.add('book-pages');
-  readBtn.classList.add('btn-read');
-  removeBtn.classList.add('btn-remove');
-
-  title.textContent = book.title;
-  author.textContent = `Author: ${book.author}`;
-  pages.textContent = `${book.pages} pages`;
-  readBtn.textContent = `Read: ${book.read}`;
-  removeBtn.textContent = 'Remove';
-
-  bookShelf.appendChild(bookCard);
-  bookCard.appendChild(title);
-  bookCard.appendChild(author);
-  bookCard.appendChild(pages);
-  bookCard.appendChild(readBtn);
-  bookCard.appendChild(removeBtn);
-
-  // remove child of bookShelf that was clicked
-  removeBtn.addEventListener('click', () => {
-    removeBook(book);
-    bookShelf.removeChild(bookCard);
-  });
-
-  readBtn.addEventListener('click', () => {
-    if (readBtn.textContent === 'Read: yes') {
-      readBtn.textContent = 'Read: no';
-    } else {
-      readBtn.textContent = 'Read: yes';
-    }
-  });
-}
-
-// remove book in myLibrary array
-function removeBook(index) {
-  myLibrary.splice(index, 1);
-  console.log(myLibrary);
-}
-
-// Add an event listener to the form submit event
-form.addEventListener('submit', addBookToLibrary);
-
-// footer
-year.textContent = currentYear;
+// library is the instance
+const library = new Library();
