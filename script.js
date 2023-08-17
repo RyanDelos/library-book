@@ -30,7 +30,6 @@ class Library {
 
   showForm() {
     this.hidden.style.visibility = 'visible';
-    console.log('clicked');
   }
 
   hideForm() {
@@ -64,7 +63,6 @@ class Library {
   renderBooks() {
     this.bookShelf.innerHTML = '';
     this.myLibrary.forEach((book, index) => {
-      console.log(book);
       this.generateBookCard(book, index);
     });
   }
@@ -114,7 +112,6 @@ class Library {
   // remove book in myLibrary array
   removeBook(index) {
     this.myLibrary.splice(index, 1);
-    console.log(this.myLibrary);
   }
 }
 
